@@ -1,0 +1,6 @@
+Commands to add:
+    -!status
+        -Network socket to BlogBot
+    -!watcher (and associated threads)
+        -ask monitor
+        -BlogBot status update
