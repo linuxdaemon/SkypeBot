@@ -39,6 +39,7 @@ public class Commands {
     public static boolean isCommand(String text, String channel) {
         //System.out.println(channelCommandList);
         String cmd = text.split(" |\n")[0].toLowerCase();
+        LogHelper.debug("Command to check: " + cmd);
         return commandList.containsKey(cmd) || immutableCommandList.containsKey(cmd) || channelCommandList.size() > 0 && channelCommandList.containsKey(channel) && channelCommandList.get(channel).containsKey(cmd) || immutableChannelCommandList.size() > 0 && immutableChannelCommandList.containsKey(channel) && immutableChannelCommandList.get(channel).containsKey(cmd);
     }
 

@@ -130,6 +130,7 @@ public class StatusBot {
             while (br.hasNextLine() && (line = br.nextLine()) != null) {
                 msg += line;
             }
+
             LogHelper.debug(msg);
             Activity[] actArr = gson.fromJson(parser.parse(msg), Activity[].class);
             for (Activity act : actArr) {

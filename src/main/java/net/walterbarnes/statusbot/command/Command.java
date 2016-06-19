@@ -16,7 +16,7 @@ public abstract class Command {
     static String parse(String text, String user, String[] args, String channel) {
         Map<String, String> fmt = new HashMap<>();
         List<String> argList = Arrays.asList(args);
-        fmt.put("${@}", args.length > 1 ? StringUtils.join(argList.subList(1, argList.size() - 1), " ") : "");
+        fmt.put("${@}", args.length > 1 ? StringUtils.join(argList.subList(1, argList.size()), " ") : "");
         fmt.put("${*}", StringUtils.join(argList, " "));
         fmt.put("${+}", StringUtils.join(argList, "+"));
         fmt.put("${u}", MessageHelper.User.getUserNameFromString(user));

@@ -24,10 +24,14 @@ public class ActivityHandler {
         if (Commands.isCommand(event.message, event.to)) {
             LogHelper.info("Command found");
             String rep = Commands.exec(event.bot, event.from, event.to, event.message);
-            if (rep.length() > 100)
+            if (rep.length() > 300)
             {
-                event.bot.send(event.from, Commands.exec(event.bot, event.from, event.to, event.message), true);
-                event.bot.reply(event.from + " check your private messages, if you don't see anything, add me as a contact and try again");
+                event.bot.send(event.from, rep, false);
+                event.bot.reply(event.from.split(":", 1)[1] + " check your private messages, if you don't see anything, add me as a contact and try again", true);
+            }
+            else
+            {
+                event.bot.reply(rep, false);
             }
         }
     }
