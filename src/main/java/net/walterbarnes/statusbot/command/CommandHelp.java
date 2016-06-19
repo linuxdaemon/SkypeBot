@@ -45,8 +45,6 @@ public class CommandHelp extends Command {
                         custArr.size() > 1 ? "s" : "", StringUtils.join(custArr, ", ")));
             }
         }
-
-        bot.send(user, StringUtils.join(out, "\n"), true);
-        return "";
+        return StringUtils.join(out, "\n");
     }
 }

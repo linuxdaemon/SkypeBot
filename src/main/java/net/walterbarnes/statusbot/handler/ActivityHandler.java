@@ -23,7 +23,12 @@ public class ActivityHandler {
         }
         if (Commands.isCommand(event.message, event.to)) {
             LogHelper.info("Command found");
-            event.bot.reply(Commands.exec(event.bot, event.from, event.to, event.message));
+            String rep = Commands.exec(event.bot, event.from, event.to, event.message);
+            if (rep.length() > 100)
+            {
+                event.bot.send(event.from, Commands.exec(event.bot, event.from, event.to, event.message), true);
+                event.bot.reply(event.from + " check your private messages, if you don't see anything, add me as a contact and try again");
+            }
         }
     }
 
