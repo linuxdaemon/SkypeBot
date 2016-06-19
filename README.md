@@ -1,2 +1,2 @@
 # SkypeBot
-IRC likie bot for Skype
+IRC like bot for Skype
