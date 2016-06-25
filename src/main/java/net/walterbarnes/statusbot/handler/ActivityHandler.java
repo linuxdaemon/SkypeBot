@@ -27,7 +27,7 @@ public class ActivityHandler {
             if (rep.length() > 300)
             {
                 event.bot.send(event.from, rep, false);
-                event.bot.reply(event.from.split(":", 1)[1] + " check your private messages, if you don't see anything, add me as a contact and try again", true);
+                event.bot.reply(event.from.split(":", 2)[1] + " check your private messages, if you don't see anything, add me as a contact and try again", true);
             }
             else
             {

@@ -30,6 +30,49 @@ public class RegisterCommands {
         Commands.registerGlobalCommand("!relcom", new CommandReload(), false);
         Commands.registerGlobalCommand("!help", new CommandHelp(), false);
 
+        Commands.registerGlobalCommand("!alive", new Command() {
+            @Override
+            public String run(Bot bot, String user, String channel, String... args) {
+                long time = 1463877434;
+                ArrayList<String> timeArr = new ArrayList<>();
+                int seconds = (int) ((System.currentTimeMillis() / 1000) - 1463877434);
+                int days = (int) Math.floor(seconds / 86400);
+                seconds = seconds % 86400;
+                int hours = (int) Math.floor(seconds / 3600);
+                seconds = seconds % 3600;
+                int minutes = (int) Math.floor(seconds / 60);
+                seconds = seconds % 60;
+                seconds = (int) Math.floor(seconds);
+                String out = "I have been alive for: ";
+                if (days > 1) {
+                    timeArr.add(days + " days");
+                }
+                else if (days > 0) {
+                    timeArr.add(days + " day");
+                }
+                if (hours > 1) {
+                    timeArr.add(hours + " hours");
+                }
+                else if (hours > 0) {
+                    timeArr.add(hours + " hour");
+                }
+                if (minutes > 1) {
+                    timeArr.add(minutes + " minutes");
+                }
+                else if (minutes > 0) {
+                    timeArr.add(minutes + " minute");
+                }
+                if (seconds > 1) {
+                    timeArr.add(seconds + " seconds");
+                }
+                else if (seconds > 0) {
+                    timeArr.add(seconds + " second");
+                }
+
+                return out + StringUtils.join(timeArr, ", ");
+            }
+        }.setHelpMsg("Returns how long I have existed for"), false);
+
         Commands.registerGlobalCommand("!memo", new Command() {
             @Override
             public String run(Bot bot, String user, String channel, String... args) {

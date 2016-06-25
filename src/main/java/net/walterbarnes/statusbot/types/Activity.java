@@ -48,6 +48,7 @@ public class Activity {
     public enum UserType {
         UNKNOWN(-1),
         USER(8),
+        HASHEDUSER(29),
         GROUP(19),
         BOT(28);
 

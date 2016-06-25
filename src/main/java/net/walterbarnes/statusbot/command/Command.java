@@ -2,6 +2,7 @@ package net.walterbarnes.statusbot.command;
 
 import com.github.onyxfoxdevelopment.collections.CollectionHelper;
 import net.walterbarnes.skypesdk.messaging.Bot;
+import net.walterbarnes.statusbot.util.LogHelper;
 import net.walterbarnes.statusbot.util.MessageHelper;
 import org.apache.commons.lang3.StringUtils;
 
@@ -25,7 +26,7 @@ public abstract class Command {
         }
 
         for (int i = 0; i < args.length; i++) {
-            fmt.put(String.format("${%d-}", i), StringUtils.join(argList.subList(i, argList.size() - 1), " "));
+            fmt.put(String.format("${%d-}", i), StringUtils.join(argList.subList(i, argList.size()), " "));
         }
 
         Pattern pattern = Pattern.compile("\\$\\{([^\\}]+)\\}");
@@ -39,11 +40,11 @@ public abstract class Command {
         }
         for (String string : subs) {
             if (string.startsWith("random:")) {
-                System.out.println(string);
+                LogHelper.debug(string);
                 List<String> posArr = Arrays.asList(string.split(":", 2)[1].split(",", -1));
-                System.out.println(posArr);
+                LogHelper.debug(posArr);
                 ArrayList<String> s = new ArrayList<>(CollectionHelper.randomElement(posArr, 1, true));
-                text = text.replaceFirst(String.format("\\$\\{%s\\}", string), s.get(0));
+                text = text.replaceFirst(String.format("\\$\\{%s\\}", (string)).replaceAll("\\?", "\\\\?"), s.get(0));
                 continue;
             }
             if (!fmt.containsKey(String.format("${%s}", string))) {

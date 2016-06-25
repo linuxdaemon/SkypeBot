@@ -13,7 +13,10 @@ public class MessageReceivedEvent extends ActivityReceivedEvent {
 
     public MessageReceivedEvent(String data) {
         super(data);
-        this.message = msg.getContent();
+        if (msg.getContent().contains("</at>"))
+            this.message = msg.getContent().split("</at>", 2)[1].substring(1);
+        else
+            this.message = msg.getContent();
         this.from = msg.getFrom();
         this.fromDisplayName = msg.getFromDisplayName();
         this.to = msg.getTo();
